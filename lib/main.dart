@@ -24,10 +24,20 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: '11:47'),
+      home: const MyHomePage(title: '16:11'),
     );
   }
 }
+
+enum TweetType {
+  text('text', Divider()),
+  image('image', Divider());
+
+  final String type;
+  final Widget widget;
+  const TweetType(this.type, this.widget);
+}
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -50,7 +60,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+void showEnum() {
+  final a = TweetType.values[1].widget;
+  print(a);
+}
   void _incrementCounter() {
+    showEnum();
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -112,4 +127,5 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
 }
